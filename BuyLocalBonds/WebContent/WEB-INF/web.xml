@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>BuyLocalBonds</display-name>
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+    <servlet-name>LoginWorkitem</servlet-name>
+    <servlet-class>Workflow.LoginWorkitem</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>LoginWorkitem</servlet-name>
+    <url-pattern>/LoginWorkitem</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>BondWorkItem</servlet-name>
+    <servlet-class>Workflow.BondWorkItem</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>BondWorkItem</servlet-name>
+    <url-pattern>/BondWorkItem</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ClientWorkItem</servlet-name>
+    <servlet-class>Workflow.ClientWorkItem</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ClientWorkItem</servlet-name>
+    <url-pattern>/ClientWorkItem</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

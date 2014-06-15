@@ -1,0 +1,267 @@
+CREATE DATABASE  IF NOT EXISTS `blbdb` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `blbdb`;
+-- MySQL dump 10.13  Distrib 5.6.11, for Win32 (x86)
+--
+-- Host: localhost    Database: blbdb
+-- ------------------------------------------------------
+-- Server version	5.1.47-community
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `bond`
+--
+
+DROP TABLE IF EXISTS `bond`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bond` (
+  `CUSIP` char(8) NOT NULL,
+  `bidPrice` float DEFAULT NULL,
+  `askPrice` float DEFAULT NULL,
+  `coupon` float DEFAULT NULL,
+  `maturityDate` date DEFAULT NULL,
+  `issuer` varchar(45) DEFAULT NULL,
+  `rating` varchar(45) DEFAULT NULL,
+  `yield` float DEFAULT NULL,
+  `par` float DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `bondName` varchar(100) DEFAULT NULL,
+  `bondType` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`CUSIP`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bond`
+--
+
+LOCK TABLES `bond` WRITE;
+/*!40000 ALTER TABLE `bond` DISABLE KEYS */;
+INSERT INTO `bond` VALUES ('12119202',85.28,86.72,9.92,'2055-10-19','KPMG','B+',5.66,100,35869934,NULL,'Corporate'),('14322005',110.36,110.78,6.89,'2046-11-16','Merrill Lynch','BBB',7.86,100,185416386,NULL,'Corporate'),('25416444',114.96,115.26,7.29,'2043-12-22','Dabur Pharma','A-',6.5,100,33431685,NULL,'Corporate'),('28529027',87.25,87.8,6.36,'2021-11-17','Goldman Sachs','A-',7.06,100,300860457,NULL,'Corporate'),('29908629',105.31,106.68,9.93,'2064-11-21','Creative Technologies','A-',5.15,100,94930499,NULL,'Corporate'),('35933688',93.94,95.19,4.9,'2032-10-20','KKK','AA+',7.09,100,217178824,NULL,'Corporate'),('37915972',105.3,106.65,7.14,'2056-12-20','US Treasury','B+',7.07,100,339964124,NULL,'Government'),('45103448',115.84,115.91,6.56,'2019-11-21','German Govt Bond','AA+',7.77,100,240253144,NULL,'Government'),('58068490',87.09,87.43,8.09,'2049-10-15','General Motors','AA',4.77,100,261277839,NULL,'Corporate'),('59094027',80.56,80.71,4.57,'2030-10-24','DDD','A-',4.57,100,173639583,NULL,'Corporate'),('60862026',113.22,114.26,7.61,'2049-12-10','JGB','B+',5.57,100,63879782,NULL,'Government'),('61165808',110.97,111.32,7.72,'2021-10-30','Samsung ','A-',5.3,100,380320715,NULL,'Corporate'),('71281885',87.53,89.1,4.32,'2074-12-13','JJJ','B+',4.39,100,154758850,NULL,'Corporate'),('73156146',111.93,112.18,8.32,'2048-10-25','BBB','A-',4.75,100,51214095,NULL,'Corporate'),('74658535',111.06,112.43,5.36,'2069-11-12','Vauxhall Motors','AA-',5.77,100,451001526,NULL,'Corporate'),('81160603',101.56,101.99,5.67,'2015-11-30','Hewlett Packard','A-',7.36,100,405454476,NULL,'Corporate'),('87411910',98.3,98.5,7.06,'2055-12-17','JJJ','AA+',4.2,100,141847061,NULL,'Corporate'),('99173611',103.39,104.5,9.08,'2071-10-29','Dell Inc','A+',4.69,100,182175670,NULL,'Corporate');
+/*!40000 ALTER TABLE `bond` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `client`
+--
+
+DROP TABLE IF EXISTS `client`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `client` (
+  `clientId` int(11) NOT NULL AUTO_INCREMENT,
+  `traderId` int(11) DEFAULT NULL,
+  `tradeLimit` int(11) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`clientId`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `client`
+--
+
+LOCK TABLES `client` WRITE;
+/*!40000 ALTER TABLE `client` DISABLE KEYS */;
+INSERT INTO `client` VALUES (1,1,100000,'Brad Pitt Gillespie'),(2,1,200000,'Dr Phil MeIn Edwards'),(3,3,150000,'Warren Soong Buffet'),(4,2,120000,'Steve Carrell'),(5,2,500500,'Juergen Fitschen'),(6,1,2000000,'Bill CEO Gates'),(7,2,200600,'Anshuman CEO Jain');
+/*!40000 ALTER TABLE `client` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customer`
+--
+
+DROP TABLE IF EXISTS `customer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `customer` (
+  `customerId` int(11) NOT NULL AUTO_INCREMENT,
+  `traderId` int(11) DEFAULT NULL,
+  `tradeLimit` int(11) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`customerId`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customer`
+--
+
+LOCK TABLES `customer` WRITE;
+/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES (1,1,100000,'AAA'),(2,1,200000,'BBB'),(3,3,150000,'CCC'),(4,2,120000,'DDD'),(5,2,500500,'EEE');
+/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `portfolio`
+--
+
+DROP TABLE IF EXISTS `portfolio`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `portfolio` (
+  `portfolioId` int(11) NOT NULL AUTO_INCREMENT,
+  `transactionId` varchar(45) NOT NULL,
+  PRIMARY KEY (`portfolioId`,`transactionId`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `portfolio`
+--
+
+LOCK TABLES `portfolio` WRITE;
+/*!40000 ALTER TABLE `portfolio` DISABLE KEYS */;
+INSERT INTO `portfolio` VALUES (1,'1'),(1,'13'),(1,'2'),(1,'3'),(1,'4'),(1,'5'),(1,'6'),(2,'11'),(2,'14'),(2,'17'),(2,'20'),(2,'7'),(3,'10'),(3,'15'),(3,'18'),(3,'19'),(3,'8'),(4,'12'),(4,'16'),(4,'21'),(4,'9');
+/*!40000 ALTER TABLE `portfolio` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `portfolioownership`
+--
+
+DROP TABLE IF EXISTS `portfolioownership`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `portfolioownership` (
+  `portfolioId` int(11) NOT NULL,
+  `clientId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`portfolioId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `portfolioownership`
+--
+
+LOCK TABLES `portfolioownership` WRITE;
+/*!40000 ALTER TABLE `portfolioownership` DISABLE KEYS */;
+INSERT INTO `portfolioownership` VALUES (1,2),(2,1),(3,3),(4,7);
+/*!40000 ALTER TABLE `portfolioownership` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `rating`
+--
+
+DROP TABLE IF EXISTS `rating`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `rating` (
+  `ratingWord` varchar(10) NOT NULL,
+  `ratingOrder` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ratingWord`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rating`
+--
+
+LOCK TABLES `rating` WRITE;
+/*!40000 ALTER TABLE `rating` DISABLE KEYS */;
+/*!40000 ALTER TABLE `rating` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tradequota`
+--
+
+DROP TABLE IF EXISTS `tradequota`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tradequota` (
+  `type` varchar(100) NOT NULL,
+  `Id` int(11) NOT NULL,
+  `quota` int(11) DEFAULT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`type`,`Id`,`date`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tradequota`
+--
+
+LOCK TABLES `tradequota` WRITE;
+/*!40000 ALTER TABLE `tradequota` DISABLE KEYS */;
+INSERT INTO `tradequota` VALUES ('customer',1,20000,'2013-08-12'),('customer',1,42000,'2013-08-28'),('trader',1,20000,'2013-08-12');
+/*!40000 ALTER TABLE `tradequota` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `trader`
+--
+
+DROP TABLE IF EXISTS `trader`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `trader` (
+  `traderId` int(11) NOT NULL AUTO_INCREMENT,
+  `password` varchar(45) DEFAULT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `traderLimit` int(11) DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`traderId`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `trader`
+--
+
+LOCK TABLES `trader` WRITE;
+/*!40000 ALTER TABLE `trader` DISABLE KEYS */;
+INSERT INTO `trader` VALUES (1,'Team3Roxx','Nuria',1000000,'TRADER'),(2,'Team3Roxx','Sam',2000000,'TRADER'),(3,'Team3Roxx','Sofia',3000000,'TRADER'),(4,'Team3Roxx','Anuj',6000000,'TRADER'),(5,'Team3Roxx','Ben',5000000,'TRADER'),(6,'Team3Roxx','Jeff',8000000,'TRADER'),(9,'Team3Roxx','Alex',0,'TST'),(10,'Team3Roxx','Max',0,'TST');
+/*!40000 ALTER TABLE `trader` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `transaction`
+--
+
+DROP TABLE IF EXISTS `transaction`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `transaction` (
+  `transactionId` int(11) NOT NULL AUTO_INCREMENT,
+  `CUSIP` char(8) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL,
+  `timeStamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `price` float DEFAULT NULL,
+  PRIMARY KEY (`transactionId`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `transaction`
+--
+
+LOCK TABLES `transaction` WRITE;
+/*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
+INSERT INTO `transaction` VALUES (1,'71895325',5000,'B','2013-08-23 11:23:25',98.24),(2,'73156146',10500,'S','2013-08-23 11:23:29',88.39),(3,'73156146',4000,'B','2013-08-23 11:23:31',106.85),(4,'73156146',1000,'B','2013-08-22 11:23:31',104.85),(5,'45103448',7000,'B','2013-08-22 11:23:31',106.85),(6,'58068490',1000,'S','2013-08-22 11:23:31',88.39),(7,'74658535',8000,'S','2013-08-22 11:23:31',106.85),(8,'58068490',8000,'S','2013-08-22 11:23:31',98.24),(9,'14322005',10500,'S','2013-08-22 11:23:31',96.32),(10,'45103448',1000,'B','2013-08-22 11:23:31',101.25),(11,'28529027',2500,'B','2013-08-22 11:23:31',125.02),(12,'99173611',1000,'B','2013-08-22 11:23:31',113.02),(13,'28529027',10500,'S','2013-08-22 11:23:31',79.36),(14,'99173611',1000,'B','2013-08-22 11:23:31',88.39),(15,'74658535',10500,'B','2013-08-22 11:23:31',113.02),(16,'14322005',2500,'B','2013-08-22 11:23:31',79.36),(17,'58068490',1000,'B','2013-08-22 11:23:31',125.02),(18,'58068490',11300,'B','2013-08-22 11:23:31',98.24),(19,'74658535',2500,'B','2013-08-22 11:23:31',98.24),(20,'14322005',11300,'B','2013-08-22 11:23:31',125.02),(21,'25416444',5000,'B','2013-08-22 11:23:31',101),(22,'25416444',4000,'S','2013-08-27 15:20:17',101);
+/*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2013-08-28 12:30:38

@@ -1,0 +1,21 @@
+
+
+form
+{
+	border: 1px solid black;
+	margin-left: auto;
+	margin-right: auto;
+	width:160px;
+	vertical-align:bottom;
+}
+div{
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+}
+p{
+	
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+}
